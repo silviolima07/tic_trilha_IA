@@ -1,3 +1,6 @@
+<img width="823" height="457" alt="robo2x" src="https://github.com/user-attachments/assets/ba252859-2fdc-4030-8cde-f0b150e082e3" />
+
+# Aluno: Silvio Cesar de Lima
 # Introdução à IA - Aula 01
 
 Este projeto contém o código inicial para interagir com a API da OpenAI utilizando Python. 
