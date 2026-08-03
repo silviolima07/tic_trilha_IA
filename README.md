@@ -1,3 +1,4 @@
+# Aluno: Silvio Cesar de Lima
 # Introdução à IA - Aula 01
 
 Este projeto contém o código inicial para interagir com a API da OpenAI utilizando Python. 
