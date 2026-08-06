@@ -1,7 +1,8 @@
 <img width="823" height="457" alt="robo2x" src="https://github.com/user-attachments/assets/ba252859-2fdc-4030-8cde-f0b150e082e3" />
 
 # Aluno: Silvio Cesar de Lima
-# Introdução à IA - Aula 01
+# Aula 01 - Introdução a IA
+
 
 Este projeto contém o código inicial para interagir com a API da OpenAI utilizando Python. 
 
@@ -67,3 +68,17 @@ Quando terminar de programar, você pode desativar o ambiente virtual executando
 ```bash
 deactivate
 ```
+
+# Aula 02 - Converter pdf to md
+
+Uso de Docling para extrair texto e exportar como Markdown
+
+Extrair campos: titulo, autores e ano de edição
+
+<img width="709" height="145" alt="image" src="https://github.com/user-attachments/assets/6cacb7cc-8656-4c29-a874-32c74e0381af" />
+
+
+### Teste com guard-rail configurado no OPENROUTER para bloquear envio de endereço de mail para providers externos
+
+<img width="953" height="275" alt="image" src="https://github.com/user-attachments/assets/5b11303f-6472-414d-9a94-fb5f12eef550" />
+
