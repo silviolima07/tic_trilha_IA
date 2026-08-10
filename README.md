@@ -82,3 +82,12 @@ Extrair campos: titulo, autores e ano de edição
 
 <img width="953" height="275" alt="image" src="https://github.com/user-attachments/assets/5b11303f-6472-414d-9a94-fb5f12eef550" />
 
+# Aula 03 - Extrair Embedding e gerar Métricas
+
+Gerar as funções e aplicar em termos e depois em frases.
+
+Identificar as métricas geradas.
+
+Conclusões.
+
+
