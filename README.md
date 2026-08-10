@@ -90,4 +90,34 @@ Identificar as métricas geradas.
 
 Conclusões.
 
+##  Tabela de similaridade de termos
 
+<img src="./Aula_03/tabela_similaridade_termos.png"
+     width="709"
+     alt="Tabela de similaridade de termos">
+
+## Gráfico de similaridade de termos
+
+<img src="./Aula_03/Similaridade_termos.png"
+     width="709"
+     alt="Similaridade de termos">
+
+## Tabela de similaridade de frases
+
+<img src="./Aula_03/tabela_similaridade_frases.png"
+     width="709"
+     alt="Tabela de similaridade de frases">
+
+## Conclusões / Observações
+
+<img src="./Aula_03/conclusoes_1.png"
+     width="709"
+     alt="conclusoes 1">
+
+<img src="./Aula_03/conclusoes_2.png"
+     width="709"
+     alt="conclusoes 2">
+
+<img src="./Aula_03/conclusoes_3.png"
+     width="709"
+     alt="conclusoes 3">     
