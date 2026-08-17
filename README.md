@@ -225,6 +225,100 @@ print(json.dumps(schema_de_metadados, indent=2))
 <img width="908" height="294" alt="image" src="https://github.com/user-attachments/assets/fb43bf6c-246b-4416-80a9-a72cc658ac53" />
 
 
+# Aula 06 - Projeto e Arquitetura de uma Aplicação RAG
+
+<img width="1010" height="545" alt="image" src="https://github.com/user-attachments/assets/5db98fb4-0071-42f4-ab3e-37c00d894a64" />
+
+## Qual é o problema que você deseja resolver?
+## - Problemas:
+- Departamento de Suporte: Permitir a consulta a base de dados de atendimento de tickets resolvidos para visualizar a solução adotada em problemas semelhantes em tickets novos.
+- Departamento de RH: Permitir a consulta a base de dados de funcionarios para identificar dados cadastrais, periodos de férias e promoções.
+
+## Quem utilizaria a aplicação? Descreva o usuário concretamente: cargo, contexto de uso, nível técnico.
+## Que tipo de informação o usuário gostaria de consultar?
+
+- Departamento de Suporte ao usuário e departamento de RH.
+- Colaboradores que atuam no suporte aos usuários podem fazer uso do RAG para acessar a base de tickets resolvidos.
+- Colaboradores do RH podem consultar dados dos demais colaboradores e administrar as informações relacionadas ao colaborador.
+
+## De onde vêm essas informações?
+- base de dados histórico de atendimentos fechados.
+- base de dados de colaboradores ativos.
+
+
+## Por que utilizar um LLM sozinho não seria suficiente?
+- Uma LLM foi treinada com base de dados tipo wikipedia, livros, artigos, etc...
+- Dados confidencias de empresas não fazem do treinamento e por consequencia o LLM não tem como responder a respeito desse assunto.
+  - A estratégia do RAG permite acrescentar conhecimento para o LLM.
+
+
+## Como o usuário vai utilizar o sistema? (API, aplicativo, interface web?)
+- Depende da situação, se deseja uma resposta única e completa.
+- - Uma consulta a tickets resolvidos, seria feita pelo pessoal do suporte através de uma interface web, onde visualizaria a solução e poderia repassar para o usuário. Ou ir pessoalmente e aplicar a solução encontrada.
+- no RH a consulta a dados de colaboradores é confidencial, pode ser feita via interface web, com acesso apenas via login e senha.
+
+## Perguntas que o usuário poderia fazer:
+## Suporte
+- Quais tickets resolvidos a respeito de impressoras ?
+- Quantos tickets resolvidos foram a respeito da impressora modelo Nasa?
+  - Qual o ticket mais antigo de impressoras ?
+## RH
+- Quando o colaborador João terá direito a férias remuneradas ?
+- Qual o cargo do colaborador João ?
+- Quais colaboradores tem 5 anos de trabalho na empresa ?
+
+
+
+# Por que RAG é adequado para esse problema?
+- A base de dados são documentos que podem ser indexados, por data, por departamento, por tipo, assim a criamos um base preparada para filtrar e assim recuperar trechos relevantes em nossas pesquisas.
+- Essa base pode ser facilmente atualizada e assim garantir a consistências das respostas obtidas.
+
+# Que tipo de conhecimento precisa ser fornecido ao modelo?
+- Documentos relevantes que sejam necessários para gerar a reposta correta.
+- Podem ser relatórios administrativos ou histórico de atendimentos.
+
+# Esse conhecimento muda com que frequência? (diariamente, mensalmente, quase nunca?)
+- Dados administrativos podem mudar diariamente, semanalmente ou anualmente.
+- Históricos de atendimentos, podem ser atualizados semanalmente.
+
+# Existe necessidade de utilizar documentos privados ou específicos da organização?
+- No departamento de RH, são dados confidenciais, o acesso é controlado.
+- No departamento de suporte envolve apenas dados da própria empresa, departamentos e equipamentos.
+
+# Que problemas poderiam ocorrer se o LLM respondesse apenas com seu conhecimento pré-treinado? Dê um exemplo concreto de resposta errada que ele daria no seu cenário.
+- Nenhuma LLM poderia responder a respeito de questões de RH de uma empresa, pois foi treinado com bases gerais, que não fazem referência a qualquer empresa.
+- Se perguntar para a LLM qual a faixa salarial de determinado cargo na empresa A, podem nem existir esse cargo na empresa A. Mesmo que exista, esse informação não é divulgada, a LLM pode ter pesquisado e encontrado uma média.
+
+# Em quais situações RAG não seria a melhor solução para esse problema
+# Considere e comente ao menos três alternativas:
+
+# - busca tradicional por palavra-chave;
+- O significado de uma palavra-chave tem relação com o contexto.
+- O mesmo termo pode ter significados totalmente diferentes.
+- Não compreende a intenção da pergunta, apenas busca por termos exatos, o que pode resultar em respostas incompletas ou irrelevantes se o termo não estiver explicitamente presente.
+
+# - banco de dados estruturado e consultas SQL
+- bancos de dados relacionais, dependem de relacionamentos, a linguagem SQL faz isso perfeitament- podem existir diversas tabelas, dimensões e tabelas fato, através do SQL, através de filtros, recuperar, gerar calculos e obter uma resposta.
+- Para consultas que exigem precisão, agregações (somas, contagens, médias) e filtros complexos sobre dados estruturados, um banco de dados relacional com SQL é muito mais eficiente e preciso do que o RAG.
+
+# - regras determinísticas;
+- Para problemas que possuem respostas fixas, claras e que não variam com o contexto ou que não exigem interpretação de linguagem natural, regras determinísticas (ex: if-then-else statements, tabelas de decisão) são mais simples, rápidas e menos propensas a erros e alucinações que um LLM com RAG.
+
+# - utilização direta de uma API;
+- Se a informação desejada já está disponível através de uma API bem definida que retorna dados estruturados (ex: status de um pedido, cotação de uma ação, informações de um usuário por ID), a chamada direta a essa API é mais eficiente e confiável do que tentar extrair essa informação através de um RAG que precisaria interpretar a pergunta e, talvez, interagir com a API de forma indireta.
+
+# - combinação de alguma dessas técnicas com RAG.
+## - Em muitos casos complexos, a melhor solução é uma arquitetura híbrida. Por exemplo, usar RAG para entender a intenção da pergunta e extrair entidades, mas delegar a execução de consultas agregadas ou a busca de dados estruturados para um banco de dados SQL ou uma API específica. O RAG então combinaria os resultados para formar uma resposta completa e coerente.
+
+# **Responda também:**
+
+## - Existe alguma pergunta, dentro do seu próprio cenário, que RAG responderia **mal** e um banco de dados relacional responderia bem? Qual, e por quê?
+- Sim, para o cenário de RH, a pergunta "Quantos colaboradores foram promovidos em 2023?" seria respondida mal pelo RAG. O RAG recuperaria documentos que mencionam promoções em 2023, mas teria dificuldade em **contar** de forma precisa o número exato de ocorrências ou de filtrar exclusivamente promoções, especialmente se a informação estiver espalhada ou implícita em textos. Um banco de dados relacional, por outro lado, com uma tabela de histórico de promoções, responderia essa pergunta de forma exata e eficiente com uma consulta SQL como `SELECT COUNT(*) FROM promocoes WHERE ano = 2023;`.
+
+## - O que aconteceria se a pergunta do usuário exigisse **contar**, **somar** ou **ordenar** informação espalhada por muitos documentos?
+- O RAG enfrentaria grandes dificuldades. Embora um LLM possa ter alguma capacidade de "contar" ou "somar" informações em um ou poucos parágrafos recuperados, ele não é projetado para realizar operações matemáticas precisas ou ordenação de dados em larga escala de forma confiável em múltiplos documentos. Ele poderia alucinar números, somar incorretamente ou apresentar uma ordenação subjetiva e inconsistente, pois seu foco é a coerência textual e a recuperação de informações relevantes, não a análise quantitativa ou estruturada. Para tais operações, um sistema que combine RAG com ferramentas de análise de dados estruturados (como SQL, Pandas, etc.) seria essencial.
+  
+
 
 
 
