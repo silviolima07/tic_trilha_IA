@@ -149,6 +149,85 @@ Conclusões.
 <img width="1183" height="690" alt="image" src="https://github.com/user-attachments/assets/24755d79-52f4-4e59-b9ed-edabd6726657" />
 
 
+# Aula 05 - Document, Langchain
+## Document objetivos relacionados ao artigo bioetica_e_ia.md
+<img width="936" height="383" alt="image" src="https://github.com/user-attachments/assets/d9abda7e-ffc5-41a0-900c-207894d776b5" />
+
+## Schema de metadados
+<img width="389" height="339" alt="image" src="https://github.com/user-attachments/assets/79ffd0b5-0fa9-4b13-a9ba-7f900276b1c9" />
+
+schema_de_metadados = {
+    "file_path": {
+        "tipo": "string",
+        "descricao": "Caminho completo do arquivo original do qual o chunk foi extraído."
+    },
+    
+    "file_name": {
+        "tipo": "string",
+        "descricao": "Nome do arquivo original (ex: 'bioetica_e_ia.md')."
+    },
+    
+    "file_type": {
+        "tipo": "string",
+        "descricao": "Tipo do arquivo (ex: 'text/markdown', 'application/pdf')."
+    },
+    
+    "file_size": {
+        "tipo": "integer",
+        "descricao": "Tamanho do arquivo original em bytes."
+    },
+    "creation_date": {
+        "tipo": "string",
+        "formato": "YYYY-MM-DD",
+        "descricao": "Data de criação do arquivo original."
+    },
+    "last_modified_date": {
+        "tipo": "string",
+        "formato": "YYYY-MM-DD",
+        "descricao": "Data da última modificação do arquivo original."
+    },
+    "language": {
+        "tipo": "string",
+        "descricao": "Idioma predominante do conteúdo do chunk (ex: 'pt-BR', 'en-US')."
+    },
+    "source": {
+        "tipo": "string",
+        "descricao": "Caminho ou URL da fonte do documento (equivalente à nossa 'fonte' nos documentos manuais)."
+    },
+    "page": {
+        "tipo": "integer",
+        "descricao": "Número da página onde o chunk se origina, se aplicável."
+    },
+    "chunk_id": {
+        "tipo": "string",
+        "descricao": "Identificador único para este chunk específico."
+    },
+    "section_title": {
+        "tipo": "string",
+        "descricao": "Título da seção ou subtítulo dentro do documento original de onde o chunk foi extraído."
+    },
+    "keywords": {
+        "tipo": "array de string",
+        "descricao": "Lista de palavras-chave que descrevem o conteúdo principal do chunk."
+    }
+}
+
+import json
+print(json.dumps(schema_de_metadados, indent=2))
+
+## Exemplo de chunk preenchido (json)
+
+<img width="599" height="339" alt="image" src="https://github.com/user-attachments/assets/5fb76ea6-6b8c-42d1-ae84-c6b615b9bd5c" />
+
+<img width="692" height="338" alt="image" src="https://github.com/user-attachments/assets/5af52d89-9a6b-45bf-897b-208c14ca5fb1" />
+
+## Perguntas e Respostas
+<img width="908" height="294" alt="image" src="https://github.com/user-attachments/assets/fb43bf6c-246b-4416-80a9-a72cc658ac53" />
+
+
+
+
+
 
 
 
