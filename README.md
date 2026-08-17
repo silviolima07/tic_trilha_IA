@@ -121,3 +121,36 @@ Conclusões.
 <img src="./Aula_03/imgs/conclusoes_3.png"
      width="709"
      alt="conclusoes 3">     
+
+# Aula 04 - Estratégias de chunking e embedding
+
+## Artigo: twitter_algoritmo.md
+
+<img width="774" height="319" alt="image" src="https://github.com/user-attachments/assets/e5154a4d-93ac-4c01-9581-bbea1d556994" />
+
+## Artigo: bioetica_e_ia.md
+
+<img width="765" height="314" alt="image" src="https://github.com/user-attachments/assets/56d9f3c4-d4d5-483f-af2f-fbdbbd7a5fbd" />
+
+## Artigo: escrita_academica_ia.md
+
+<img width="767" height="311" alt="image" src="https://github.com/user-attachments/assets/1f2714db-4c3d-4c54-88ae-9b448ee7717b" />
+
+## Melhor estratégia por artigo
+
+<img width="607" height="145" alt="image" src="https://github.com/user-attachments/assets/1a9c0e06-685c-4916-b984-545454f920cc" />
+
+## Cada estratégia criou uma quantidade de chunks/trechos diferentes por artigo.
+
+## No artigo bioetica_e_ia estes foram os resultados:
+<img width="580" height="343" alt="image" src="https://github.com/user-attachments/assets/73c70fcf-8873-4006-83c7-bf5bf4af593a" />
+
+## Melhor estratégia de chunking por artigo (similaridade média top 3)
+<img width="1183" height="690" alt="image" src="https://github.com/user-attachments/assets/24755d79-52f4-4e59-b9ed-edabd6726657" />
+
+
+
+
+
+
+
