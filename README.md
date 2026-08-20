@@ -229,6 +229,10 @@ print(json.dumps(schema_de_metadados, indent=2))
 
 <img width="1010" height="545" alt="image" src="https://github.com/user-attachments/assets/5db98fb4-0071-42f4-ab3e-37c00d894a64" />
 
+# Este fluxo pode ser usado para os dois contexto:
+## - Departamento de RH
+## - Departamento de Suporte
+
 # Parte 1 - Identificação dos problemas
 ## Qual é o problema que você deseja resolver?
 ## - Problemas:
